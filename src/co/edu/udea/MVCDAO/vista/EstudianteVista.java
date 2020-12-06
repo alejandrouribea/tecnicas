@@ -10,6 +10,8 @@ import java.util.List;
 
 import co.edu.udea.MVCDAO.modelo.EstudianteDTO;
 import co.edu.udea.MVCDAO.control.EstudianteControl;
+import co.edu.udea.MVCDAO.dao.impl.EstudianteDAOList;
+
 /**
  *
  * @author claudia serna
@@ -25,27 +27,31 @@ public class EstudianteVista {
         String opcion = "";
         do {
             opcion = JOptionPane.showInputDialog("Bienvenido: \n 1. Resgistrar Estudiante. "
-                    + "\n 2. Listar Estudiantes. \n 3. Salir");
-          switch(opcion){ 
-          case "1":
-            String nombre = JOptionPane.showInputDialog("ingrese el nombre");
-            String apellido = JOptionPane.showInputDialog("ingrese el apellido");
-            String identificacion = JOptionPane.showInputDialog("ingrese la identificacion");
-            char genero = JOptionPane.showInputDialog("ingrese el genero").charAt(0);
-            EstudianteDTO estudiante = new EstudianteDTO(nombre,apellido,genero,identificacion);
-            if(control.almacenarEstudiante(estudiante)){
-               JOptionPane.showMessageDialog(null, "estudiante guardado");
-            }else{
-               JOptionPane.showMessageDialog(null, "estudiante no pudo ser ingresado"); 
+                    + "\n 2. Listar Estudiantes. \n 3.modificar  \n 4.eliminar  \n 5. Salir");
+            switch (opcion) {
+                case "1":
+                    String nombre = JOptionPane.showInputDialog("ingrese el nombre");
+                    String apellido = JOptionPane.showInputDialog("ingrese el apellido");
+                    String identificacion = JOptionPane.showInputDialog("ingrese la identificacion");
+                    char genero = JOptionPane.showInputDialog("ingrese el genero").charAt(0);
+                    EstudianteDTO estudiante = new EstudianteDTO(nombre, apellido, genero, identificacion);
+                    if (control.almacenarEstudiante(estudiante)) {
+                        JOptionPane.showMessageDialog(null, "estudiante guardado");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "estudiante no pudo ser ingresado");
+                    }
+                    break;
+                case "2":
+                    //mostrar estudiantes  
+                    break;
+                case "3":
+                    control.modificarEstudiante();
+                    
+                    break;
+                case "4":
             }
-          break;
-             case "2":  
-                 //mostrar estudiantes  
-          break; 
-          }
-          
-          
-        }while(!"3".equals(opcion));
+
+        } while (!"5".equals(opcion));
     }
-    
+
 }

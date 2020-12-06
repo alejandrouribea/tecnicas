@@ -36,20 +36,24 @@ public class EstudianteDAOList implements EstudianteDAO {
     }
 
     //por  revisar
-    public boolean actualizarEstudiantes() {
+    @Override
+    public boolean actualizarEstudiante() {
         int opc = 0, indice = 0;
         String id;
         boolean x = false;
         //pedir  id para buscar estudiante
         id = JOptionPane.showInputDialog("ingrese documento para  buscar estudiante");
+        System.out.println("tamaño "+estudiantesBD.size());
         for (int i = 0; i < estudiantesBD.size(); i++) {
+            
             if (estudiantesBD.get(i).getDocumento().equals(id)) {
                 indice = i;
+                System.out.println("esto es indice "+ indice);
             }
         }
         //menu para  cambiar  dato
         do {
-            JOptionPane.showMessageDialog(null, "Digite opcion a modificar 1. Nombre  2. Apellido  3. Genero  4.Documento");
+            opc=Integer.parseInt(JOptionPane.showInputDialog(null, "Digite opcion a modificar 1. Nombre  2. Apellido  3. Genero  4.Documento"));
         } while (opc < 0 && opc > 6);
 
         //opera la  opcion  a  actaulizar  dato
@@ -115,10 +119,6 @@ public class EstudianteDAOList implements EstudianteDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public boolean actualizarEstudiante() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
 
 /*       public PersonaDTO consultarPersona(String identificacion) {

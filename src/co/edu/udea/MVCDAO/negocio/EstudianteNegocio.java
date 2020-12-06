@@ -25,6 +25,10 @@ public class EstudianteNegocio {
         
     }
     public List<EstudianteDTO> consultarEstudiante(){
-        return EstudianteDAO.consultarEstudiante();
+      return EstudianteDAO.consultarEstudiante();
     } 
+    public boolean modificarEstudiante(){
+        boolean resultado = EstudianteDAO.actualizarEstudiante();
+        return resultado;
+    }
 }

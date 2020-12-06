@@ -17,5 +17,9 @@ public class EstudianteControl {
         boolean respuesta = estudianteNegocio.almacenarEstudiante(estudiante);
         return respuesta;
     }
+    public boolean modificarEstudiante(){
+        boolean respuesta = estudianteNegocio.modificarEstudiante();
+        return respuesta;
+    }
 }
    

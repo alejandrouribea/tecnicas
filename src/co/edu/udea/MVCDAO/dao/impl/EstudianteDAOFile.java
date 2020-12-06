@@ -14,6 +14,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 import java.util.List;
 import co.edu.udea.MVCDAO.dao.EstudianteDAO;
+import static co.edu.udea.MVCDAO.dao.impl.EstudianteDAOList.estudiantesBD;
 /**
  *
  * @author claudia serna
@@ -69,7 +70,57 @@ public class EstudianteDAOFile implements EstudianteDAO {
     }
     
     public boolean actualizarEstudiante(){
-       return false; 
+       int opc = 0, indice = 0;
+        String id;
+        boolean x = false;
+        //pedir  id para buscar estudiante
+        id = JOptionPane.showInputDialog("ingrese documento para  buscar estudiante");
+        System.out.println("tamaño "+estudiantesBD.size());
+        for (int i = 0; i < estudiantesBD.size(); i++) {
+            
+            if (estudiantesBD.get(i).getDocumento().equals(id)) {
+                indice = i;
+                System.out.println("esto es indice "+ indice);
+            }
+        }
+        //menu para  cambiar  dato
+        do {
+            opc=Integer.parseInt(JOptionPane.showInputDialog(null, "Digite opcion a modificar 1. Nombre  2. Apellido  3. Genero  4.Documento"));
+        } while (opc < 0 && opc > 6);
+
+        //opera la  opcion  a  actaulizar  dato
+        switch (opc) {
+            case 1:
+                //nombre
+                String nombre = JOptionPane.showInputDialog("ingrese el nombre");
+                estudiantesBD.get(indice).setNombre(nombre);
+                x=true;
+                break;
+            case 2:
+                //apellido
+                String apellido = JOptionPane.showInputDialog("ingrese el apellido");
+                estudiantesBD.get(indice).setApellido(apellido);
+                x=true;
+                break;
+            case 3:
+                //genero
+                char genero = JOptionPane.showInputDialog("ingrese el genero").charAt(0);
+                estudiantesBD.get(indice).setGenero(genero);
+                x=true;
+                break;
+            case 4:
+                //documento
+                String identificacion = JOptionPane.showInputDialog("ingrese la identificacion");
+                estudiantesBD.get(indice).setDocumento(identificacion);
+                x=true;
+                break;
+            case 0:
+                //salir
+                System.exit(opc);
+                break;
+        }
+        //toca  mirar   como funciona  el  boolean para crear variable   y  modificar  su  valor  sea  necesario
+        return x;
     }
 
     @Override
