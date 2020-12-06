@@ -28,7 +28,7 @@ public class EstudianteVista {
                     + "\n 2. Listar Estudiantes. \n 3. Salir");
           switch(opcion){ 
           case "1":
-             String nombre = JOptionPane.showInputDialog("ingrese el nombre");
+            String nombre = JOptionPane.showInputDialog("ingrese el nombre");
             String apellido = JOptionPane.showInputDialog("ingrese el apellido");
             String identificacion = JOptionPane.showInputDialog("ingrese la identificacion");
             char genero = JOptionPane.showInputDialog("ingrese el genero").charAt(0);

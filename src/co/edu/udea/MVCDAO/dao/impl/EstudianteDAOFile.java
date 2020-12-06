@@ -20,7 +20,7 @@ import co.edu.udea.MVCDAO.dao.EstudianteDAO;
  */
 public class EstudianteDAOFile implements EstudianteDAO {
     private static final String DELIMITADOR = ",";
-    private static final String ARCHIVO = "Documentos";
+    private static final String ARCHIVO = "estudiantes.txt";
     private BufferedWriter escritorBuffer;
     private FileWriter escritorFile;
     private File archivoEstudiante;
